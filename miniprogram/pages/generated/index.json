@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "生成的图片",
+  "usingComponents": {
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-image": "tdesign-miniprogram/image/image",
+    "t-toast": "tdesign-miniprogram/toast/toast",
+    "t-loading": "tdesign-miniprogram/loading/loading"
+  }
+} 

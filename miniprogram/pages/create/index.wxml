@@ -1,0 +1,69 @@
+<!-- Create image page -->
+<view class="container">
+  <!-- Prompt Input Section -->
+  <view class="section">
+    <view class="section-title">描述你想要的图片</view>
+    
+    <t-textarea
+      class="prompt-textarea"
+      placeholder="试试描述：主角 + 在哪里 + 做什么 + 像什么风格？"
+      maxlength="1000"
+      indicator
+      disableDefaultPadding="{{true}}"
+      value="{{promptText}}"
+      bind:change="onPromptChange"
+    />
+    <t-notice-bar
+      visible
+      content="💡 提示：越详细的描述可以生成越准确的图片。例如：'一只猫咪在草地上玩耍，阳光明媚，可爱温馨的动漫风格'"
+      prefixIcon=""
+      t-class="helper-tip"
+    />
+    
+    <!-- Prompt tags -->
+    <view class="tags-container">
+      <block wx:for="{{promptTags}}" wx:key="text">
+        <t-tag 
+          class="tag-item" 
+          variant="light" 
+          theme="primary" 
+          data-tag="{{item.text}}" 
+          bind:tap="onTagTap">
+          {{item.text}}
+        </t-tag>
+      </block>
+    </view>
+    
+    <!-- Generate Button -->
+    <t-button 
+      t-class="generate-button" 
+      theme="primary" 
+      size="large" 
+      loading="{{isGenerating}}" 
+      disabled="{{!promptText || isGenerating}}" 
+      bind:tap="generateImage">
+      生成图片
+    </t-button>
+  </view>
+  
+  <!-- Negative Prompt Section -->
+  <view class="section">
+    <view class="section-title">
+      不希望出现的内容
+      <text class="optional-text">（可选）</text>
+    </view>
+    
+    <t-textarea
+      class="negative-textarea"
+      placeholder="例如：不要文字、不要模糊、不要扭曲的人物"
+      maxlength="500"
+      indicator
+      disableDefaultPadding="{{true}}"
+      value="{{negativePrompt}}"
+      bind:change="onNegativePromptChange"
+    />
+  </view>
+</view>
+
+<!-- Toast component -->
+<t-toast id="t-toast" />

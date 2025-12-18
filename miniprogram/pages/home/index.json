@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "AI 画廊",
+  "usingComponents": {
+    "t-loading": "tdesign-miniprogram/loading/loading",
+    "t-fab": "tdesign-miniprogram/fab/fab",
+    "t-divider": "tdesign-miniprogram/divider/divider"
+  }
+} 

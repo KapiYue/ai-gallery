@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Gallery - Generated Image</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/tdesign-miniprogram@1.1.8/dist/theme.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #f5f5f7;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            position: relative;
+        }
+        .t-navbar {
+            background-color: #fff;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        .back-button {
+            font-size: 20px;
+            margin-right: 8px;
+            color: #333;
+        }
+        .t-navbar-title {
+            font-size: 18px;
+            font-weight: 500;
+            flex: 1;
+            text-align: center;
+        }
+        .generated-container {
+            padding: 20px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .image-preview {
+            width: 100%;
+            max-width: 320px;
+            height: 320px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 24px;
+        }
+        .image-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .prompt-display {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 24px;
+            width: 100%;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        .prompt-title {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 8px;
+        }
+        .prompt-content {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.5;
+        }
+        .action-buttons {
+            display: flex;
+            width: 100%;
+            gap: 12px;
+        }
+        .retry-button {
+            flex: 1;
+            background-color: #f5f5f7;
+            border: 1px solid #ddd;
+            color: #333;
+            border-radius: 8px;
+            padding: 12px 0;
+            font-size: 16px;
+            text-align: center;
+        }
+        .publish-button {
+            flex: 1;
+            background-color: #0052d9;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 0;
+            font-size: 16px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 82, 217, 0.3);
+        }
+        .status-message {
+            margin-top: 16px;
+            font-size: 14px;
+            color: #888;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="t-navbar">
+        <div class="back-button">←</div>
+        <div class="t-navbar-title">生成的图片</div>
+    </div>
+    
+    <!-- Generated Image Display -->
+    <div class="generated-container">
+        <div class="image-preview">
+            <img src="https://picsum.photos/id/249/500/500" alt="Generated Image">
+        </div>
+        
+        <div class="prompt-display">
+            <div class="prompt-title">提示词</div>
+            <div class="prompt-content">一只柴犬坐在樱花树下，微风吹拂，粉色花瓣飘落，温暖午后阳光，日式动漫风格</div>
+        </div>
+        
+        <div class="action-buttons">
+            <button class="retry-button">重新生成</button>
+            <button class="publish-button">发布</button>
+        </div>
+        
+        <div class="status-message">提示：发布后将显示在首页画廊中</div>
+    </div>
+</body>
+</html> 

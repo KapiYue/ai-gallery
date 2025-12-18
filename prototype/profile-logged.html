@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Gallery - Profile (Logged In)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/tdesign-miniprogram@1.1.8/dist/theme.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #f5f5f7;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            position: relative;
+        }
+        .t-navbar {
+            background-color: #fff;
+            padding: 12px 16px;
+            font-size: 18px;
+            font-weight: 500;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        .profile-header {
+            background-color: #fff;
+            padding: 24px 16px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        .profile-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 16px;
+        }
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .profile-info {
+            flex: 1;
+        }
+        .profile-name {
+            font-size: 18px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 4px;
+        }
+        .profile-id {
+            font-size: 14px;
+            color: #888;
+        }
+        .section-title {
+            padding: 16px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+            display: flex;
+            align-items: center;
+        }
+        .section-title-icon {
+            margin-right: 8px;
+            color: #0052d9;
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            padding: 0 12px 12px 12px;
+        }
+        .image-card {
+            background-color: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        .image-container {
+            height: 160px;
+            overflow: hidden;
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .image-prompt {
+            padding: 8px 12px;
+            font-size: 13px;
+            color: #333;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .tab-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background-color: #fff;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.05);
+        }
+        .tab-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 50%;
+            padding: 8px 0;
+            color: #888;
+        }
+        .tab-item.active {
+            color: #0052d9;
+        }
+        .tab-icon {
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+        .tab-label {
+            font-size: 12px;
+        }
+        .no-images {
+            padding: 40px 0;
+            text-align: center;
+            color: #888;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="t-navbar">我的</div>
+    
+    <!-- Profile Header -->
+    <div class="profile-header">
+        <div class="profile-avatar">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Avatar">
+        </div>
+        <div class="profile-info">
+            <div class="profile-name">张三</div>
+            <div class="profile-id">ID: 1234567</div>
+        </div>
+    </div>
+    
+    <!-- Personal Gallery Section -->
+    <div class="section-title">
+        <span class="section-title-icon">🖼️</span>
+        <span>个人画廊</span>
+    </div>
+    
+    <!-- Image Gallery -->
+    <div class="image-grid">
+        <!-- Image 1 -->
+        <div class="image-card">
+            <div class="image-container">
+                <img src="https://picsum.photos/id/243/300/300" alt="AI Generated Image">
+            </div>
+            <div class="image-prompt">魔法森林，神秘光芒，梦幻色彩，童话风格</div>
+        </div>
+        
+        <!-- Image 2 -->
+        <div class="image-card">
+            <div class="image-container">
+                <img src="https://picsum.photos/id/244/300/300" alt="AI Generated Image">
+            </div>
+            <div class="image-prompt">海边日落，沙滩，椰子树，橙红色天空</div>
+        </div>
+        
+        <!-- Image 3 -->
+        <div class="image-card">
+            <div class="image-container">
+                <img src="https://picsum.photos/id/247/300/300" alt="AI Generated Image">
+            </div>
+            <div class="image-prompt">猫咪探险家，宇宙背景，太空服，动漫风格</div>
+        </div>
+    </div>
+    
+    <!-- Tab Bar -->
+    <div class="tab-bar">
+        <div class="tab-item">
+            <div class="tab-icon">🏠</div>
+            <div class="tab-label">首页</div>
+        </div>
+        <div class="tab-item active">
+            <div class="tab-icon">👤</div>
+            <div class="tab-label">我的</div>
+        </div>
+    </div>
+</body>
+</html> 

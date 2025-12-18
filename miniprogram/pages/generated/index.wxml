@@ -1,0 +1,52 @@
+<!-- Generated image page -->
+<view class="container">
+  <!-- Loading state when image is being processed -->
+  <block wx:if="{{isLoading}}">
+    <view class="loading-container">
+      <t-loading theme="circular" size="80rpx" text="图片生成中..." loading />
+    </view>
+  </block>
+  
+  <!-- Content when image is ready -->
+  <block wx:else>
+    <!-- Image preview -->
+    <view class="image-preview">
+      <image 
+        src="{{generatedImage}}" 
+        mode="aspectFit" 
+        show-menu-by-longpress="{{true}}" 
+        bind:tap="previewImage" />
+    </view>
+    
+    <!-- Prompt display -->
+    <view class="prompt-card">
+      <view class="prompt-label">提示词</view>
+      <view class="prompt-text">{{promptText}}</view>
+    </view>
+    
+    <!-- Action buttons -->
+    <view class="action-buttons">
+      <t-button 
+        theme="light" 
+        size="large" 
+        t-class="action-button retry-button" 
+        bind:tap="handleRetry">
+        重新生成
+      </t-button>
+      
+      <t-button 
+        theme="primary" 
+        size="large" 
+        t-class="action-button publish-button" 
+        loading="{{isPublishing}}"
+        bind:tap="handlePublish">
+        发布
+      </t-button>
+    </view>
+    
+    <view class="tip-text">提示：发布后将显示在首页画廊中</view>
+  </block>
+</view>
+
+<!-- Toast component -->
+<t-toast id="t-toast" /> 

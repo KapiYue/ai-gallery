@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "创建图片",
+  "usingComponents": {
+    "t-textarea": "tdesign-miniprogram/textarea/textarea",
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-tag": "tdesign-miniprogram/tag/tag",
+    "t-toast": "tdesign-miniprogram/toast/toast",
+    "t-input": "tdesign-miniprogram/input/input",
+    "t-notice-bar": "tdesign-miniprogram/notice-bar/notice-bar"
+  }
+} 
