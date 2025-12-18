@@ -16,6 +16,8 @@
   border-radius: 24rpx;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
 }
 
 .image-container {
@@ -27,10 +29,26 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.image-container:active image {
+  transform: scale(1.05);
+}
+
+.card-footer {
+  padding: 16rpx 20rpx;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.prompt-container {
+  flex: 1;
+  margin-bottom: 12rpx;
 }
 
 .image-prompt {
-  padding: 16rpx 24rpx;
   font-size: 26rpx;
   color: #333;
   line-height: 1.4;
@@ -38,6 +56,31 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  padding: 8rpx 0;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.user-avatar {
+  width: 48rpx !important;
+  height: 48rpx !important;
+  min-width: 48rpx !important;
+  min-height: 48rpx !important;
+  font-size: 24rpx !important;
+  flex-shrink: 0;
+}
+
+.user-name {
+  font-size: 24rpx;
+  color: #666;
+  margin-left: 12rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .loading-container {

@@ -1,6 +1,7 @@
 {
   "description": "项目配置文件",
   "miniprogramRoot": "miniprogram/",
+  "cloudfunctionRoot": "cloudfunctions/",
   "compileType": "miniprogram",
   "setting": {
     "useCompilerPlugins": [
@@ -27,16 +28,10 @@
     "compileHotReLoad": false,
     "skylineRenderEnable": true,
     "es6": true,
-    "compileWorklet": false,
-    "uglifyFileName": false,
-    "uploadWithSourceMap": true,
-    "minifyWXSS": true,
-    "minifyWXML": true,
-    "localPlugins": false,
-    "condition": false,
-    "swc": false,
-    "disableSWC": true,
-    "disableUseStrict": false
+    "useMultiFrameRuntime": true,
+    "useApiHook": true,
+    "useApiHostProcess": true,
+    "uploadWithSourceMap": true
   },
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
@@ -51,5 +46,9 @@
     "ignore": [],
     "include": []
   },
-  "appid": "wxc9e0eb658d8def26"
+  "appid": "wxc9e0eb658d8def26",
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate/",
+  "cloudfunctionsConfig": {
+    "concurrency": 10
+  }
 }

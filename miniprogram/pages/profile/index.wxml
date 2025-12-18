@@ -1,66 +1,102 @@
 <!-- Profile page - Both logged in and not logged in states -->
 <view class="container">
-  <!-- Not logged in state -->
-  <block wx:if="{{!isLoggedIn}}">
-    <view class="login-container">
-      <view class="login-avatar">
-        <t-avatar image="" icon="user" size="large" />
-      </view>
-      <view class="login-text">请登录查看您的个人画廊</view>
-      <t-button 
-        t-class="login-button" 
-        theme="primary" 
-        icon="logo-wechat" 
-        size="large" 
-        bind:tap="handleLogin">
-        微信一键登录
-      </t-button>
+  <!-- Loading state -->
+  <block wx:if="{{isLoading}}">
+    <view class="loading-container">
+      <t-loading theme="circular" size="80rpx" text="加载中..." />
     </view>
   </block>
-
-  <!-- Logged in state -->
+  
+  <!-- Content after loading -->
   <block wx:else>
-    <!-- User profile header -->
-    <view class="profile-header">
-      <t-avatar 
-        class="profile-avatar" 
-        image="{{userInfo.avatarUrl}}" 
-        size="large" />
-      <view class="profile-info">
-        <view class="profile-name">{{userInfo.nickName}}</view>
-        <view class="profile-id">ID: {{userInfo.userId}}</view>
-      </view>
-    </view>
-
-    <!-- Personal gallery section -->
-    <view class="section-header">
-      <text class="section-icon">🖼️</text>
-      <text class="section-title">个人画廊</text>
-    </view>
-
-    <!-- Gallery grid or empty state -->
-    <block wx:if="{{userImages.length > 0}}">
-      <view class="image-grid">
-        <block wx:for="{{userImages}}" wx:key="id">
-          <view class="image-card">
-            <view class="image-container">
-              <image src="{{item.imageUrl}}" mode="aspectFill" lazy-load="true" />
-            </view>
-            <view class="image-prompt">{{item.promptText}}</view>
-          </view>
-        </block>
+    <!-- Not logged in state -->
+    <block wx:if="{{!isLoggedIn}}">
+      <view class="login-container">
+        <view class="login-avatar">
+          <t-avatar image="" icon="user" size="large" />
+        </view>
+        <view class="login-text">请登录查看您的个人画廊</view>
+        <t-button 
+          t-class="login-button" 
+          theme="primary" 
+          icon="logo-wechat" 
+          size="large" 
+          bind:tap="handleLogin">
+          微信一键登录
+        </t-button>
       </view>
     </block>
+
+    <!-- Logged in state -->
     <block wx:else>
-      <t-empty 
-        icon="info-circle" 
-        description="您还没有创作任何图片" />
-      <view class="empty-actions">
+      <!-- User profile header -->
+      <view class="profile-header">
+        <view class="avatar-wrapper">
+          <t-avatar 
+            class="profile-avatar" 
+            image="{{userInfo.avatarUrl}}" 
+            size="large" />
+          <view class="edit-avatar" bind:tap="handleEditAvatar">
+            <t-icon name="edit" size="48rpx" />
+          </view>
+        </view>
+        <view class="profile-info">
+          <view class="profile-name">{{userInfo.nickName}}</view>
+          <t-button 
+            size="small" 
+            variant="outline" 
+            theme="primary" 
+            bind:tap="handleEditProfile"
+            icon="edit"
+            t-class="edit-btn">
+            编辑资料
+          </t-button>
+        </view>
+      </view>
+
+      <!-- Personal gallery section -->
+      <view class="section-header">
+        <text class="section-icon">🖼️</text>
+        <text class="section-title">个人画廊</text>
+      </view>
+
+      <!-- Gallery grid or empty state -->
+      <block wx:if="{{userImages.length > 0}}">
+        <view class="image-grid">
+          <block wx:for="{{userImages}}" wx:key="id">
+            <view class="image-card">
+              <view class="image-container">
+                <image src="{{item.imageUrl}}" mode="aspectFill" lazy-load="true" />
+              </view>
+              <view class="image-prompt">{{item.promptText}}</view>
+            </view>
+          </block>
+        </view>
+      </block>
+      <block wx:else>
+        <t-empty 
+          icon="info-circle" 
+          description="您还没有创作任何图片" />
+        <view class="empty-actions">
+          <t-button 
+            theme="primary" 
+            size="medium" 
+            bind:tap="navigateToCreate">
+            开始创作
+          </t-button>
+        </view>
+      </block>
+      
+      <!-- Logout section -->
+      <view class="logout-section">
         <t-button 
-          theme="primary" 
-          size="medium" 
-          bind:tap="navigateToCreate">
-          开始创作
+          theme="danger" 
+          variant="outline"
+          size="large" 
+          icon="logout" 
+          t-class="logout-button"
+          bind:tap="handleLogout">
+          退出登录
         </t-button>
       </view>
     </block>

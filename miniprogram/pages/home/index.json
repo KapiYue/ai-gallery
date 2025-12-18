@@ -3,6 +3,7 @@
   "usingComponents": {
     "t-loading": "tdesign-miniprogram/loading/loading",
     "t-fab": "tdesign-miniprogram/fab/fab",
-    "t-divider": "tdesign-miniprogram/divider/divider"
+    "t-divider": "tdesign-miniprogram/divider/divider",
+    "t-image": "tdesign-miniprogram/image/image"
   }
 } 

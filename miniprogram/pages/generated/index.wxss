@@ -9,9 +9,38 @@
 
 .loading-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 80vh;
+}
+
+.status-text {
+  font-size: 28rpx;
+  color: #888;
+  margin-top: 32rpx;
+  text-align: center;
+}
+
+.error-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  padding: 0 48rpx;
+}
+
+.error-text {
+  font-size: 32rpx;
+  color: #333;
+  margin: 40rpx 0;
+  text-align: center;
+}
+
+.error-container .retry-button {
+  width: 80% !important;
+  margin-top: 48rpx;
 }
 
 .image-preview {

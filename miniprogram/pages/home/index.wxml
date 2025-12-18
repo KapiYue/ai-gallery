@@ -3,13 +3,30 @@
   <view class="image-grid">
     <block wx:for="{{images}}" wx:key="id">
       <view class="image-card">
-        <view class="image-container">
+        <view class="image-container" bind:tap="previewImage" data-index="{{index}}">
           <image src="{{item.imageUrl}}" mode="aspectFill" lazy-load="true" />
         </view>
-        <view class="image-prompt">{{item.promptText}}</view>
+        <view class="card-footer">
+          <view class="prompt-container">
+            <view class="image-prompt">{{item.promptText}}</view>
+          </view>
+          <view class="user-info">
+            <t-image
+              width="24px"
+              height="24px"
+              shape="circle"
+              src="{{item.userInfo.avatarUrl}}"  />
+            <text class="user-name">{{item.userInfo.nickName}}</text>
+          </view>
+        </view>
       </view>
     </block>
   </view>
+  
+  <!-- Empty state -->
+  <block wx:if="{{!loading && images.length === 0}}">
+    <t-empty icon="info-circle" description="暂无图片" />
+  </block>
   
   <!-- Loading more indicator -->
   <view class="loading-container" wx:if="{{loading}}">
@@ -17,7 +34,7 @@
   </view>
   
   <!-- No more data divider -->
-  <t-divider wx:if="{{hasReachedEnd && !loading}}" content="没有更多了" />
+  <t-divider wx:if="{{hasReachedEnd && !loading && images.length > 0}}" content="没有更多了" />
   
   <!-- Floating action button for creating images -->
   <t-fab icon="add" bind:click="navigateToCreate" aria-label="创建图片" />

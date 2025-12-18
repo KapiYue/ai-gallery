@@ -3,7 +3,24 @@
   <!-- Loading state when image is being processed -->
   <block wx:if="{{isLoading}}">
     <view class="loading-container">
-      <t-loading theme="circular" size="80rpx" text="图片生成中..." loading />
+      <t-loading theme="circular" size="80rpx" text="图片生成中...{{taskStatus !== 'PENDING' ? '请耐心等待' : ''}}" loading />
+      <view class="status-text" wx:if="{{taskStatus === 'RUNNING'}}">
+        正在生成，需要几秒钟...
+      </view>
+      <view class="status-text" wx:elif="{{taskStatus === 'PENDING'}}">
+        任务排队中...
+      </view>
+    </view>
+  </block>
+  
+  <!-- Error state -->
+  <block wx:elif="{{hasError}}">
+    <view class="error-container">
+      <t-icon name="error-circle" size="96rpx" color="#ff4646" />
+      <view class="error-text">{{errorMessage}}</view>
+      <t-button theme="primary" size="large" t-class="retry-button" bind:tap="handleRetry">
+        重新生成
+      </t-button>
     </view>
   </block>
   
