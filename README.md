@@ -15,13 +15,6 @@
 </p>
 <br/>
 
-<div align="center">
-  <img src="./mockup-home.png" alt="首页-画廊社区" width="280"><br>
-  <img src="./mockup-create.png" alt="创作页面" width="280"><br>
-  <img src="./mockup-regenerate.png" alt="重新生成" width="280"><br>
-  <img src="./mockup-profile.png" alt="个人中心" width="280">
-</div>
-
 
 ## ✨ 核心功能
 
