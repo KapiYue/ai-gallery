@@ -1,0 +1,391 @@
+# Contributing
+
+Thanks for your interest in contributing to AI Gallery Mini Program 🎨
+
+We welcome contributions of all kinds, including:
+
+- 🐛 Bug fixes
+- ✨ New features
+- 📖 Documentation improvements
+- ⚡ Performance optimizations
+- 🎨 UI/UX enhancements
+- 🧪 Tests and code quality improvements
+
+Please read the guidelines below before submitting changes.
+
+---
+
+## Development Workflow
+
+### 1. Fork the repository
+
+Create your own fork and clone it locally:
+
+```bash
+git clone https://github.com/your-username/ai-gallery-miniprogram.git
+cd ai-gallery-miniprogram
+```
+
+### 2. Create a feature branch
+
+Please avoid committing directly to the main branch.
+
+Use meaningful branch names:
+
+```bash
+# Feature
+git checkout -b feature/image-style-selector
+
+# Bug fix
+git checkout -b fix/login-state-error
+
+# Refactor
+git checkout -b refactor/gallery-service
+```
+
+Branch naming suggestions:
+
+| Type | Example |
+|--------|---------|
+| feature | feature/user-gallery |
+| fix | fix/image-cache |
+| refactor | refactor/auth-service |
+| docs | docs/update-readme |
+| chore | chore/dependencies |
+
+---
+
+## Local Development Setup
+
+### Requirements
+
+- Node.js >= 14
+- WeChat Developer Tools (latest recommended)
+- Tencent Cloud CloudBase account
+- Mini Program developer permissions
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Configure project environment:
+
+```bash
+# project.config.json
+
+{
+  "cloudfunctionRoot":"cloudfunctions/",
+  "cloudbase":{
+    "env":"your-env-id"
+  }
+}
+```
+
+Upload cloud functions if needed:
+
+```bash
+tcb functions:deploy -e your-env-id
+```
+
+Open the project using WeChat Developer Tools.
+
+---
+
+## Project Structure
+
+```text
+ai-gallery-miniprogram/
+├── cloudfunctions/
+├── miniprogram/
+│   ├── pages/
+│   ├── components/
+│   ├── utils/
+│   ├── config/
+│   ├── types/
+│   └── styles/
+├── package.json
+└── README.md
+```
+
+General guidelines:
+
+- `pages/` → page-level logic
+- `components/` → reusable components
+- `utils/` → shared utilities
+- `types/` → TypeScript definitions
+- `cloudfunctions/` → backend business logic
+
+Keep responsibilities clear and avoid large mixed files.
+
+---
+
+## Coding Guidelines
+
+### TypeScript
+
+Prefer strong typing:
+
+```typescript
+interface UserInfo {
+  openid: string
+  nickname: string
+  avatar: string
+}
+```
+
+Avoid:
+
+```typescript
+const user: any = {}
+```
+
+Use:
+
+```typescript
+const user: UserInfo = {}
+```
+
+---
+
+### Naming Convention
+
+#### Variables
+
+```typescript
+const imageUrl = ''
+const galleryList = []
+```
+
+#### Components
+
+```text
+gallery-item/
+prompt-input/
+empty-state/
+```
+
+#### Cloud Functions
+
+```text
+generate-image
+publish-work
+user-login
+```
+
+Use descriptive names.
+
+Avoid abbreviations unless widely understood.
+
+---
+
+### Component Principles
+
+Components should:
+
+- Have a single responsibility
+- Avoid deeply nested logic
+- Be reusable
+- Keep business logic outside UI components when possible
+
+Good:
+
+```typescript
+<gallery-item />
+<prompt-input />
+```
+
+Avoid creating very large components handling unrelated behaviors.
+
+---
+
+## UI Guidelines
+
+This project uses:
+
+- WeChat Mini Program Native Framework
+- TDesign Weixin
+
+Please keep UI consistent:
+
+- Follow existing spacing patterns
+- Follow existing typography styles
+- Reuse TDesign components whenever possible
+- Avoid introducing duplicate component styles
+
+Example:
+
+```json
+{
+  "usingComponents": {
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-input": "tdesign-miniprogram/input/input"
+  }
+}
+```
+
+---
+
+## Cloud Function Guidelines
+
+Cloud functions should:
+
+- Validate all inputs
+- Return consistent response structures
+- Handle errors gracefully
+- Avoid duplicated logic
+
+Recommended response format:
+
+```typescript
+return {
+  success: true,
+  data,
+  message: ''
+}
+```
+
+Error example:
+
+```typescript
+return {
+  success: false,
+  message: 'Image generation failed'
+}
+```
+
+---
+
+## Commit Message Convention
+
+Please follow conventional commit style:
+
+```bash
+feat: add AI style selector
+fix: resolve login token issue
+docs: update deployment guide
+refactor: optimize gallery loading logic
+chore: update dependencies
+```
+
+Common types:
+
+| Type | Description |
+|--------|---------|
+| feat | New feature |
+| fix | Bug fix |
+| docs | Documentation |
+| refactor | Code refactor |
+| style | Formatting only |
+| test | Tests |
+| chore | Maintenance |
+
+---
+
+## Pull Request Guidelines
+
+Before opening a PR:
+
+Checklist:
+
+- [ ] Code builds successfully
+- [ ] No TypeScript errors
+- [ ] Cloud functions tested
+- [ ] UI tested in WeChat Developer Tools
+- [ ] Documentation updated if needed
+- [ ] No unnecessary files included
+
+PR descriptions should include:
+
+```md
+## Summary
+
+Brief description of changes
+
+## Changes
+
+- Added ...
+- Fixed ...
+- Updated ...
+
+## Screenshots
+
+Add screenshots if UI changed
+
+## Testing
+
+Explain how changes were tested
+```
+
+---
+
+## Reporting Issues
+
+When creating an issue, include:
+
+### Bug report
+
+```md
+Environment:
+- WeChat version:
+- Device:
+- Node.js version:
+
+Steps to reproduce:
+
+1.
+2.
+3.
+
+Expected behavior:
+
+Actual behavior:
+
+Screenshots:
+```
+
+### Feature request
+
+```md
+Problem:
+
+Suggested solution:
+
+Additional context:
+```
+
+---
+
+## Areas That Need Contributions
+
+Current areas where help is especially appreciated:
+
+- AI prompt optimization
+- Image generation improvements
+- Gallery performance optimization
+- Better loading experience
+- Internationalization
+- Unit testing
+- UI/UX refinement
+- Documentation
+
+---
+
+## Code of Conduct
+
+Please be respectful and constructive.
+
+We aim to create an open, friendly, and collaborative environment for everyone.
+
+---
+
+## Questions
+
+If you have questions or ideas:
+
+- Open an Issue
+- Start a Discussion
+- Submit a Pull Request
+
+We appreciate every contribution ❤️
