@@ -1,55 +1,36 @@
-Contributing
+# Contributing
 
-Welcome
-Thank you for your interest in contributing to creem-payment! Contributions of all kinds are welcome — bug reports, feature requests, documentation improvements, and code changes. Please read this guide before submitting anything so that maintainers can review and merge your work efficiently.
+感谢你为 AI Gallery 项目做出贡献。
 
-Getting Started
-Development prerequisites
-Node.js 18+
-pnpm 9+
-A Supabase project (free tier is sufficient)
-A Creem account with at least one test product
-Git
+## 开发环境
 
-Fork and clone
-Environment setup
-Copy .env.example to .env.local and fill in your Supabase and Creem credentials. Run pnpm db:migrate to apply the latest migrations.
+- Node.js 14+
+- 微信开发者工具
+- CloudBase 环境
 
-Contribution Types
-Bug Reports
-Before opening an issue, please search existing issues to avoid duplicates. When filing a bug report, include:
-A concise, descriptive title
-Steps to reproduce the issue
-Expected vs. actual behavior
-Relevant environment information (OS, Node version, browser if applicable)
-Any relevant error messages or stack traces
+## 开发流程
 
-Feature Requests
-Open a GitHub Issue with the label enhancement. Describe the problem your feature solves and provide a rough implementation sketch if possible. Feature requests are discussed with the maintainers before work begins to avoid duplicate effort.
+```bash
+git checkout -b feature/your-feature
+```
 
-Pull Requests
-For anything beyond small typo fixes, open an issue first to discuss the change. This saves you time if the direction does not align with project goals.
-Pull request checklist:
-Branch naming: feat/<name>, fix/<name>, docs/<name>, chore/<name>
-Code style: run pnpm lint before pushing; fix all warnings
-TypeScript: all new code must be fully typed; avoid any
-Schema changes: run pnpm db:generate to create a migration file and commit it alongside the schema change
-Commit messages: follow Conventional Commits — e.g. feat: add subscription pause endpoint
-PR description: explain what changed, why, and how to test it
+### 提交规范
 
-Code Style Guidelines
-TypeScript strict mode is enabled — avoid type assertions unless absolutely necessary
-Prefer server-side data fetching in Server Components and Route Handlers over client-side fetch where possible
-All Drizzle queries must go through lib/db/index.ts — do not create additional database clients
-Creem API calls must go through lib/creem.ts — do not call the Creem API directly from components
-Environment variables must be validated at the point of use with a non-null assertion or runtime check; never hardcode secrets
-Use nanoid for generating IDs — do not use Math.random() or Date.now()
+推荐使用 Conventional Commits：
 
-Testing Webhooks Locally
-Use the Creem CLI or a tunnel tool such as ngrok to expose your local server:
+```text
+feat:
+fix:
+docs:
+refactor:
+chore:
+```
 
-Review Process
-Maintainers aim to respond to new pull requests within five business days. Reviews may request changes; please address all comments and push new commits to the same branch — do not force-push after review has started. Once approved, a maintainer will squash-merge the pull request.
+## Pull Request
 
-Releasing
-Releases are managed by the core maintainers and follow semantic versioning (MAJOR.MINOR.PATCH). Contributors do not need to bump version numbers; the maintainers handle this as part of the release workflow.
+提交前请确保：
+
+- 代码可运行
+- 无 TypeScript 错误
+- 通过基础测试
+- 更新相关文档
